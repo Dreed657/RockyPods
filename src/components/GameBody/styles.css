@@ -1,0 +1,16 @@
+.GameBox {
+    min-height: 100%;
+}
+.playerActions {
+    display: inline-flex;
+    align-items: center;
+    text-align: center;
+}
+
+button {
+    font-size: 25px;
+    padding: 25px;
+    border-radius: 50%;
+    border: 0px;
+    margin: 10px 10px;
+}

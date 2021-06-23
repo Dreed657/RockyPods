@@ -1,0 +1,29 @@
+.PlayerBox {
+    align-items: center;
+    text-align: center;
+}
+
+.name {
+    font-size: 35px;
+    font-weight: 850;
+}
+
+.score {
+    font-size: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.winRate {
+    margin-top: 15px;
+    font-size: 20px;
+}
+
+.mainGesture {
+    background: rgb(121, 121, 121);
+    padding: 0.5em;
+    font-size: 50px;
+    text-align: center;
+    display: inline-flex;
+    border-radius: 50%;
+}
