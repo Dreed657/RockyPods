@@ -3,3 +3,15 @@
   margin: 0px auto;
   text-align: center;
 }
+
+header {
+  width: 100%;
+}
+
+header h1 {
+  padding: 25px 0px;
+  font-size: 35px;
+  font-weight: 700;
+  color: white;
+  background-color: #17191d;
+}
