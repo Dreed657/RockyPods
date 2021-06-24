@@ -12,8 +12,7 @@
 - [x] Make it responsive!
 
 ####  Add more features:
-- Add game statistics?
--  Add data persistance?
--  Add db?
+-  Add better game statistics?
+-  Add data persistance db?
 -  Add Auth? Profiles?
 -  Add Multiplayer?
