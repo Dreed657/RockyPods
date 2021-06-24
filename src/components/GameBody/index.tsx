@@ -16,6 +16,7 @@ import GameService from '../../services/GameService';
 
 import './styles.css';
 import TitleUtil from '../../utils/TitleUtil';
+import { ResultEnum } from '../../models/ResultEnum';
 
 const GameBody = () => {
     const [roundsCount, setRoundsCount] = useState<number>(0);
@@ -25,6 +26,7 @@ const GameBody = () => {
 
     const [playerScore, setPlayerScore] = useState<number>(0);
     const [computerScore, setComputerScore] = useState<number>(0);
+    const [drawScore, setDrawScore] = useState<number>(0);
 
     const [playerWinRate, setPlayerWinRate] = useState<number>(0);
     const [computerWinRate, setComputerWinRate] = useState<number>(0);
@@ -39,22 +41,43 @@ const GameBody = () => {
 
         let roundResult = GameService.CheckWin(playerGesture, computerGesture);
 
-        if (roundResult) {
+        if (roundResult === ResultEnum.Player) {
             setPlayerScore(playerScore + 1);
-        } else {
+        } else if (roundResult === ResultEnum.Computer) {
             setComputerScore(computerScore + 1);
+        } else {
+            setDrawScore(drawScore + 1);
+        }
+
+        switch (roundResult) {
+            case ResultEnum.Player:
+                setPlayerScore(playerScore + 1);
+                break;
+            case ResultEnum.Computer:
+                setComputerScore(computerScore + 1);
+                break;
+            case ResultEnum.Draw:
+                setDrawScore(drawScore + 1);
+                break;
+            default:
+                console.log('Something went south!')
         }
 
         // [Dispute Wins / (Dispute Wins + Dispute Losses)] * 100 = Win Rate
-        let playerWinRate = Math.round((playerScore / (computerScore + (roundsCount - playerScore))) * 100);
-        let computerWinRate = Math.round((computerScore / (computerScore + (roundsCount - computerScore))) * 100);
-
+        let playerWinRate = Math.round(
+            (playerScore / (computerScore + (roundsCount - playerScore))) * 100
+        );
+        let computerWinRate = Math.round(
+            (computerScore / (computerScore + (roundsCount - computerScore))) *
+                100
+        );
         setPlayerWinRate(playerWinRate);
         setComputerWinRate(computerWinRate);
 
         setRoundsCount(roundsCount + 1);
 
-        TitleUtil.ChangeStatus(roundResult ? 'Player' : 'Computer');
+        // Set page title
+        TitleUtil.ChangeStatus(ResultEnum[roundResult]);
 
         if (showDebugInfo) {
             console.log('Gesture: ', HandEnum[playerInput]);
