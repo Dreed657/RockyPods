@@ -17,7 +17,7 @@ interface PlayerBoxProps {
     Name: string;
     Gesture: HandEnum;
     Score: number;
-    WinRate: string;
+    WinRate: number;
 }
 
 const PlayerBox = (props: PlayerBoxProps) => {

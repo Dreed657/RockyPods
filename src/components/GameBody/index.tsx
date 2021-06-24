@@ -19,15 +19,15 @@ import TitleUtil from '../../utils/TitleUtil';
 
 const GameBody = () => {
     const [roundsCount, setRoundsCount] = useState<number>(0);
-    
+
     const [playerGesture, setPlayerGesture] = useState<HandEnum>(0);
     const [computerGesture, setComputerGesture] = useState<HandEnum>(0);
 
     const [playerScore, setPlayerScore] = useState<number>(0);
     const [computerScore, setComputerScore] = useState<number>(0);
 
-    const [playerWinRate, setPlayerWinRate] = useState<string>('');
-    const [computerWinRate, setComputerWinRate] = useState<string>('');
+    const [playerWinRate, setPlayerWinRate] = useState<number>(0);
+    const [computerWinRate, setComputerWinRate] = useState<number>(0);
 
     const [showDebugInfo, setShowDebugInfo] = useState<boolean>(false);
 
@@ -45,10 +45,12 @@ const GameBody = () => {
             setComputerScore(computerScore + 1);
         }
 
-        setPlayerWinRate(((playerScore / computerScore) * 100).toPrecision(4));
-        setComputerWinRate(
-            ((computerScore / playerScore) * 100).toPrecision(4)
-        );
+        // [Dispute Wins / (Dispute Wins + Dispute Losses)] * 100 = Win Rate
+        let playerWinRate = Math.round((playerScore / (computerScore + (roundsCount - playerScore))) * 100);
+        let computerWinRate = Math.round((computerScore / (computerScore + (roundsCount - computerScore))) * 100);
+
+        setPlayerWinRate(playerWinRate);
+        setComputerWinRate(computerWinRate);
 
         setRoundsCount(roundsCount + 1);
 
@@ -73,9 +75,9 @@ const GameBody = () => {
                 Score={computerScore}
                 WinRate={computerWinRate}
             ></PlayerBox>
-           
+
             <hr />
-           
+
             <PlayerBox
                 Name={'Player'}
                 Gesture={playerGesture}
