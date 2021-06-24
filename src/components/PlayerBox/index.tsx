@@ -44,7 +44,7 @@ const PlayerBox = (props: PlayerBoxProps) => {
             <div className="mainGesture">
                 <FontAwesomeIcon icon={gestureIcon}/>
             </div>
-            <p className="winRate">WinRate {props.WinRate}%</p>
+            <p className="winRate">WinRate {Number.isNaN(props.WinRate) ? 0 : props.WinRate}%</p>
         </div>
     );
 };

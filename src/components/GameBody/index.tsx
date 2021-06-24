@@ -107,7 +107,10 @@ const GameBody = () => {
                 WinRate={computerWinRate}
             ></PlayerBox>
             <hr />
-            <p className="resultDisplay">Winner: {ResultEnum[roundResult]} | Draws: {drawPercentage}%</p>
+            <p className="resultDisplay">
+                Winner: {ResultEnum[roundResult]} | Draws:{' '}
+                {Number.isNaN(drawPercentage) ? 0 : drawPercentage}%
+            </p>
             <hr />
             <PlayerBox
                 Name={'Player'}
