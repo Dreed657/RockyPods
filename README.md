@@ -9,7 +9,7 @@
 ![screen-gif](https://i.imgur.com/4eyaA9L.gif)
 
 ### TODO:
-- [ ] Make it responsive!
+- [x] Make it responsive!
 
 ####  Add more features:
 - Add game statistics?

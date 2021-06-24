@@ -1,16 +1,43 @@
 .GameBox {
     min-height: 100%;
 }
+
 .playerActions {
     display: inline-flex;
     align-items: center;
     text-align: center;
 }
 
-button {
+p.resultDisplay {
+    font-size: 30px;
+    font-weight: 650;
+}
+
+.roundCounter {
+    font-size: 15px;
+}
+
+button.playerActionButton {
     font-size: 25px;
     padding: 25px;
     border-radius: 50%;
     border: 0px;
     margin: 10px 10px;
+}
+
+@media screen and (max-width: 600px) {
+    .roundCounter {
+        font-size: 10px;
+    }
+    p.resultDisplay {
+        font-size: 20px;
+        font-weight: 550;
+    }
+    button.playerActionButton {
+        font-size: 15px;
+        padding: 15px;
+        border-radius: 50%;
+        border: 0px;
+        margin: 10px 10px;
+    }
 }

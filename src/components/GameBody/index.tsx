@@ -28,6 +28,8 @@ const GameBody = () => {
     const [computerScore, setComputerScore] = useState<number>(0);
     const [drawScore, setDrawScore] = useState<number>(0);
 
+    const [roundResult, setRoundResult] = useState<ResultEnum>(ResultEnum.Fail);
+
     const [playerWinRate, setPlayerWinRate] = useState<number>(0);
     const [computerWinRate, setComputerWinRate] = useState<number>(0);
 
@@ -39,7 +41,7 @@ const GameBody = () => {
         let computerInput = GameService.ComputerPlay();
         setComputerGesture(computerInput);
 
-        let roundResult = GameService.CheckWin(playerGesture, computerGesture);
+        setRoundResult(GameService.CheckWin(playerGesture, computerGesture));
 
         if (roundResult === ResultEnum.Player) {
             setPlayerScore(playerScore + 1);
@@ -60,7 +62,8 @@ const GameBody = () => {
                 setDrawScore(drawScore + 1);
                 break;
             default:
-                console.log('Something went south!')
+                console.log('Something went south!');
+                break;
         }
 
         // [Dispute Wins / (Dispute Wins + Dispute Losses)] * 100 = Win Rate
@@ -98,31 +101,33 @@ const GameBody = () => {
                 Score={computerScore}
                 WinRate={computerWinRate}
             ></PlayerBox>
-
             <hr />
-
+            <p className="resultDisplay">Winner: {ResultEnum[roundResult]}</p>
+            <hr />
             <PlayerBox
                 Name={'Player'}
                 Gesture={playerGesture}
                 Score={playerScore}
                 WinRate={playerWinRate}
             ></PlayerBox>
-
             <div className="playerActions">
-                <p>Rounds: {roundsCount}</p>
+                <p className="roundCounter">Rounds: {roundsCount}</p>
                 <Button
+                    className="playerActionButton"
                     onClick={() => onPlayerAction(HandEnum.Rock)}
                     color="secondary"
                 >
                     <FontAwesomeIcon icon={faHandRock} />
                 </Button>
                 <Button
+                    className="playerActionButton"
                     onClick={() => onPlayerAction(HandEnum.Paper)}
                     color="secondary"
                 >
                     <FontAwesomeIcon icon={faHandPaper} />
                 </Button>
                 <Button
+                    className="playerActionButton"
                     onClick={() => onPlayerAction(HandEnum.Scissors)}
                     color="secondary"
                 >

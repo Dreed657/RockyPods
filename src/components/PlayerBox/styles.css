@@ -27,3 +27,26 @@
     display: inline-flex;
     border-radius: 50%;
 }
+
+@media screen and (max-width: 600px) {
+    .name {
+        font-size: 25px;
+        font-weight: 650;
+    }
+
+    .score {
+        font-size: 20px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+
+    .winRate {
+        font-size: 12px;
+        margin-top: 10px;
+    }
+
+    .mainGesture {
+        padding: 0.5em;
+        font-size: 35px;
+    }
+}

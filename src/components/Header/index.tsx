@@ -1,9 +1,11 @@
 import React from 'react'
 
+import './styles.css'
+
 const Header = () => {
     return (
         <header>
-            <h1>ROCK, PAPER, SCISSORS</h1>
+            <p className="heading">ROCK, PAPER, SCISSORS</p>
         </header>
     )
 }
