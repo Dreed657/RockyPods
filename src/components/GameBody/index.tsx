@@ -33,6 +33,8 @@ const GameBody = () => {
     const [playerWinRate, setPlayerWinRate] = useState<number>(0);
     const [computerWinRate, setComputerWinRate] = useState<number>(0);
 
+    const [drawPercentage, setDrawPercentage] = useState<number>(0);
+
     const [showDebugInfo, setShowDebugInfo] = useState<boolean>(false);
 
     const onPlayerAction = (playerInput: HandEnum) => {
@@ -74,6 +76,9 @@ const GameBody = () => {
             (computerScore / (computerScore + (roundsCount - computerScore))) *
                 100
         );
+        let drawPercentage = Math.round((drawScore / roundsCount) * 100);
+
+        setDrawPercentage(drawPercentage);
         setPlayerWinRate(playerWinRate);
         setComputerWinRate(computerWinRate);
 
@@ -102,7 +107,7 @@ const GameBody = () => {
                 WinRate={computerWinRate}
             ></PlayerBox>
             <hr />
-            <p className="resultDisplay">Winner: {ResultEnum[roundResult]}</p>
+            <p className="resultDisplay">Winner: {ResultEnum[roundResult]} | Draws: {drawPercentage}%</p>
             <hr />
             <PlayerBox
                 Name={'Player'}
