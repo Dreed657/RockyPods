@@ -6,7 +6,7 @@
 - Font-Awesome Icons
 - Reactstrap
 
-![screen-gif](./readme-content/myScreen.gif)
+![screen-gif](https://i.imgur.com/4eyaA9L.gif)
 
 ### TODO:
 -  Make it responsive!
