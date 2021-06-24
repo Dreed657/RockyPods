@@ -7,7 +7,7 @@ import './App.css';
 
 function App() {
   return (
-    <div className="appWrapper">
+    <div className="wrapper">
       <Header></Header>
       <GameBody></GameBody>
     </div>
