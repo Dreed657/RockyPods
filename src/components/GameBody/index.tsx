@@ -15,6 +15,7 @@ import { HandEnum } from '../../models/HandEnum';
 import GameService from '../../services/GameService';
 
 import './styles.css';
+import TitleUtil from '../../utils/TitleUtil';
 
 const GameBody = () => {
     const [roundsCount, setRoundsCount] = useState<number>(0);
@@ -50,6 +51,9 @@ const GameBody = () => {
         );
 
         setRoundsCount(roundsCount + 1);
+
+        TitleUtil.ChangeStatus(roundResult ? 'Player' : 'Computer');
+
         if (showDebugInfo) {
             console.log('Gesture: ', HandEnum[playerInput]);
             console.log(`Input: P ${playerGesture} C ${computerGesture}`);
