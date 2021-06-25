@@ -1,0 +1,13 @@
+version: "3.7"
+services:
+  frontend:
+    container_name: Client-Dev
+    build:
+      context: ./Client
+      dockerfile: ./Dockerfile.Dev
+
+  backend:
+    container_name: Server-Dev
+    build:
+      context: ./Server
+      dockerfile: ./Dockerfile.Dev
