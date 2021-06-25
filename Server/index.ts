@@ -1,17 +1,20 @@
-import express from "express";
+import express from 'express';
 
-const app = express();
-const port = 8080;
+import configureExpress from './config/express';
 
-app.get("/", (req, res) => {
-  res.send("Hello world!");
-});
+import healthRoutes from './routes/health.routes';
 
-app.get("/healthcheck", (req, res) => {
-  res.status(200).send("Pong!");
-});
+const app: express.Express = express();
+const PORT = process.env.PORT || 8080;
 
-app.listen(port, () => {
-  // tslint:disable-next-line:no-console
-  console.log(`server started at http://localhost:${port}`);
+// App configuration
+configureExpress(app);
+
+// Add routes to routing table
+healthRoutes(app);
+
+// Start the app on PORT
+app.listen(PORT, () => {
+    // tslint:disable-next-line:no-console
+    console.log(` Server is listeing on ${PORT}...`);
 });
