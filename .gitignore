@@ -20,9 +20,6 @@ public/css/main.css
 # Coverage reports
 coverage
 
-# API keys and secrets
-.env
-
 # Build
 /dist
 
