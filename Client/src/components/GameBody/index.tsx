@@ -64,7 +64,7 @@ const GameBody = () => {
                 setDrawScore(drawScore + 1);
                 break;
             default:
-                console.log('Something went south!');
+                console.log('Something went south!', ResultEnum[roundResult]);
                 break;
         }
 

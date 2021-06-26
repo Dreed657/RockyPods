@@ -1,3 +1,6 @@
+// tslint:disable-next-line: no-var-requires
+require('dotenv').config();
+
 import express from 'express';
 
 import configureExpress from './config/express';
