@@ -3,7 +3,9 @@ require('dotenv').config();
 
 import express from 'express';
 
+import configuration from './config';
 import configureExpress from './config/express';
+import configureDb from './database';
 
 import healthRoutes from './routes/health.routes';
 import authRoutes from './routes/auth.routes';
@@ -13,6 +15,7 @@ const PORT = process.env.PORT || 8080;
 
 // App configuration
 configureExpress(app);
+configureDb(configuration.mongoUrl);
 
 // Add routes to routing table
 healthRoutes(app);
