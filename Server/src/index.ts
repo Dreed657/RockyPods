@@ -6,6 +6,7 @@ import express from 'express';
 import configureExpress from './config/express';
 
 import healthRoutes from './routes/health.routes';
+import authRoutes from './routes/auth.routes';
 
 const app: express.Express = express();
 const PORT = process.env.PORT || 8080;
@@ -15,6 +16,7 @@ configureExpress(app);
 
 // Add routes to routing table
 healthRoutes(app);
+authRoutes(app);
 
 // Start the app on PORT
 app.listen(PORT, () => {
