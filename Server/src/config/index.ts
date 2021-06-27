@@ -1,6 +1,5 @@
-module.exports = {
-    mongoUrl: 'mongodb://localhost/easy-notes',
+export default {
+    mongoUrl: 'mongodb://localhost/rockypods',
     SALT_ROUNDS: 10,
-    SECRET: 'navuhodonosor',
-    COOKIE_NAME: 'USER_SESSION',
+    SECRET: 'navuhodonosor'
 }
