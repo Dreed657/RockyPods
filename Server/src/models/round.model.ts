@@ -3,6 +3,7 @@ import mongoose, { Schema } from 'mongoose';
 export interface RoundInput {
     result: string;
     gesture: string;
+    userId: string;
 }
 
 export interface RoundDocument extends RoundInput, Document {}
@@ -20,6 +21,7 @@ const roundSchema = new Schema(
             enum: ['Rock', 'Paper', 'Scissors'],
             required: true,
         },
+        userId: { type: mongoose.Types.ObjectId, ref: 'User' },
     },
     {
         timestamps: true,

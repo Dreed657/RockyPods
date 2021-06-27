@@ -12,22 +12,25 @@ class GameContoller {
 
         const user: UserDocument = await User.findOne({ _id: req.user._id });
 
-        const round = await Round.create({
+        await Round.create({
             result,
             gesture,
-        });
-
-        user.rounds.push(round);
-        user.save().catch(err => {
-            return res.status(500).json({
-                status: err.message,
-                err
+            userId: req.user._id,
+        })
+            .then((r) => {
+                user.rounds.push(r);
+                user.save(() => {
+                    return res.status(201).json({
+                        r,
+                    });
+                });
             })
-        });
-
-        res.status(200).json({
-            a: round,
-        });
+            .catch((err) => {
+                return res.status(500).json({
+                    status: err.message,
+                    err,
+                });
+            });
     }
 }
 

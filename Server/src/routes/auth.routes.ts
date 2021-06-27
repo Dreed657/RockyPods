@@ -1,10 +1,11 @@
 import { Express } from 'express';
+import isAuthenticated from '../middlewares/isAuthenticated';
 import AuthContoller from '../controllers/auth.controller';
 
 const Prefix = '/auth';
 
 export default (app: Express) => {
-    app.get(`${Prefix}/login`, AuthContoller.Login);
-    app.get(`${Prefix}/register`, AuthContoller.Register);
-    app.get(`${Prefix}/getMineStats`, AuthContoller.GetMineStats);
+    app.post(`${Prefix}/login`, AuthContoller.Login);
+    app.post(`${Prefix}/register`, AuthContoller.Register);
+    app.get(`${Prefix}/getProfile`, isAuthenticated, AuthContoller.GetProfile);
 };
