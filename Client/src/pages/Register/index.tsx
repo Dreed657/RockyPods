@@ -1,11 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 import { Formik } from 'formik';
 
 import './styles.css';
+import AuthService from '../../services/AuthService';
 
 const RegisterPage = () => {
+    const history = useHistory();
+
     return (
         <div className="formWrapper">
             <div className="formBox">
@@ -29,10 +32,13 @@ const RegisterPage = () => {
                         return errors;
                     }}
                     onSubmit={(values, { setSubmitting }) => {
-                        setTimeout(() => {
-                            console.log(values);
-                            setSubmitting(false);
-                        }, 400);
+                        AuthService.register(values)
+                            .then((res) => {
+                                history.push('/');
+                            })
+                            .catch((err) => {
+                                console.log(err);
+                            });
                     }}
                 >
                     {({
@@ -95,7 +101,7 @@ const RegisterPage = () => {
                 </Formik>
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default RegisterPage;

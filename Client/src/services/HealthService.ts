@@ -1,5 +1,5 @@
 import { AxiosResponse } from 'axios';
-import axiosInstance from '../utils/axiosUtils';
+import axiosInstance from '../utils/axiosUtil';
 
 const API_URL = 'http://localhost:5000';
 

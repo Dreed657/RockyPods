@@ -1,5 +1,15 @@
+import { AxiosResponse } from 'axios';
 import { HandEnum } from '../models/HandEnum';
 import { ResultEnum } from '../models/ResultEnum';
+
+import axiosInstance from '../utils/axiosUtil';
+
+const API_URL = 'http://localhost:5000';
+
+interface IRound {
+    gesture: string,
+    result: string
+}
 
 class GameService {
     CheckWin(playerGesture: HandEnum, computerGesture: HandEnum): ResultEnum {
@@ -52,6 +62,10 @@ class GameService {
         let randomIndex = Math.floor(Math.random() * enumValues.length);
         
         return enumValues[randomIndex];
+    }
+
+    SaveRound(data: IRound): Promise<AxiosResponse> {
+        return axiosInstance.post(`${API_URL}/game/saveround`, data);
     }
 }
 

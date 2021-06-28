@@ -1,11 +1,16 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 import { Formik } from 'formik';
+
+import AuthService from '../../services/AuthService';
+import tokenUtil from '../../utils/tokenUtil';
 
 import './styles.css';
 
 const LoginPage = () => {
+    const history = useHistory();
+
     return (
         <div className="formWrapper">
             <div className="formBox">
@@ -29,10 +34,14 @@ const LoginPage = () => {
                         return errors;
                     }}
                     onSubmit={(values, { setSubmitting }) => {
-                        setTimeout(() => {
-                            console.log(values);
-                            setSubmitting(false);
-                        }, 400);
+                        AuthService.login(values)
+                            .then((res) => {
+                                tokenUtil.setToken(res.data.token);
+                                history.push('/');
+                            })
+                            .catch((err) => {
+                                console.log(err);
+                            });
                     }}
                 >
                     {({

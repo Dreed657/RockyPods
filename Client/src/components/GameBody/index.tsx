@@ -19,6 +19,8 @@ import TitleUtil from '../../utils/TitleUtil';
 import { ResultEnum } from '../../models/ResultEnum';
 
 const GameBody = () => {
+    const [guestMode, setGuestMode] = useState<boolean>(false);
+
     const [roundsCount, setRoundsCount] = useState<number>(0);
 
     const [playerGesture, setPlayerGesture] = useState<HandEnum>(0);
@@ -44,6 +46,17 @@ const GameBody = () => {
         setComputerGesture(computerInput);
 
         setRoundResult(GameService.CheckWin(playerGesture, computerGesture));
+
+        const data = {
+            result: ResultEnum[roundResult],
+            gesture: HandEnum[playerGesture],
+        };
+
+        console.log('Data: ', data);
+
+        if (!guestMode) {
+            GameService.SaveRound(data);
+        }
 
         if (roundResult === ResultEnum.Player) {
             setPlayerScore(playerScore + 1);
