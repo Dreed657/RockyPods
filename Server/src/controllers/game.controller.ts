@@ -32,6 +32,12 @@ class GameContoller {
                 });
             });
     }
+
+    public async GetLeaderboard(req: Request, res: Response) {
+        const top10 = await User.find({}).sort({'rounds': -1}).select('rounds').limit(10);
+
+        return res.status(200).json(top10);
+    }
 }
 
 export default new GameContoller();
