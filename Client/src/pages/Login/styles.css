@@ -1,0 +1,29 @@
+.formWrapper {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.formBox {
+    position: relative;
+    width: 30vw;
+    box-sizing: border-box;
+    background-color: rgb(92, 92, 92);
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+}
+@media screen and (max-width: 600px) {
+    .formBox {
+        position: relative;
+        width: 50vw;
+        box-sizing: border-box;
+        background-color: rgb(92, 92, 92);
+        border-radius: 10px;
+        padding: 20px;
+        text-align: center;
+    }
+}
+
