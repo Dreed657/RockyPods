@@ -1,6 +1,7 @@
 version: "3.7"
 services:
   frontend:
+    container_name: Client-Prod
     build:
       context: ./Client
       dockerfile: ./Dockerfile.Prod
@@ -8,6 +9,9 @@ services:
       - "80:80"
 
   backend:
+    container_name: Server-Prod
     build:
       context: ./Server
       dockerfile: ./Dockerfile.Prod
+    environment: 
+      - MONGO_URL=mongodb+srv://root:<password>@cluster0.tlzjj.mongodb.net/myFirstDatabase?retryWrites=true&w=majority

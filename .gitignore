@@ -3,4 +3,3 @@ yarn.lock
 build
 node_modules
 dist
-docker-compose.prod.yml
