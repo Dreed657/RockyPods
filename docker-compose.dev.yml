@@ -5,9 +5,11 @@ services:
     build:
       context: ./Client
       dockerfile: ./Dockerfile.Dev
-
+    
   backend:
     container_name: Server-Dev
     build:
       context: ./Server
       dockerfile: ./Dockerfile.Dev
+    environment: 
+      - MONGO_URL=mongodb://mongodb:27017/rockypods
