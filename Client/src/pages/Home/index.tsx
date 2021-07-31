@@ -9,14 +9,19 @@ import './styles.css';
 
 const HomePage = () => {
     const [userData, setUserdata] = useState<any>({});
-    useEffect(() => {
-        AuthService.getProfile().then((res) => {
-            setUserdata(res.data);
-            console.log(res);
-        });
-    }, []);
+    
+    const isAuth = tokenUtil.getToken() === ''; 
 
-    if (!tokenUtil.getToken()) {
+    useEffect(() => {
+        if (!isAuth) {
+            AuthService.getProfile().then((res) => {
+                setUserdata(res.data);
+                console.log(res);
+            });
+        }
+    }, [isAuth]);
+
+    if (isAuth) {
         return (
             <div className="box">
                 <h1>

@@ -19,7 +19,7 @@ import TitleUtil from '../../utils/TitleUtil';
 import { ResultEnum } from '../../models/ResultEnum';
 
 const GameBody = () => {
-    const [guestMode, setGuestMode] = useState<boolean>(false);
+    // const [guestMode, setGuestMode] = useState<boolean>(false);
 
     const [roundsCount, setRoundsCount] = useState<number>(0);
 
@@ -54,9 +54,9 @@ const GameBody = () => {
 
         console.log('Data: ', data);
 
-        if (!guestMode) {
+        // if (!guestMode) {
             GameService.SaveRound(data);
-        }
+        // }
 
         if (roundResult === ResultEnum.Player) {
             setPlayerScore(playerScore + 1);

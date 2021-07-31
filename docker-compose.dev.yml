@@ -13,3 +13,12 @@ services:
       dockerfile: ./Dockerfile.Dev
     environment: 
       - MONGO_URL=mongodb://mongodb:27017/rockypods
+
+  mongodb:
+    image: mongo
+    container_name: mongodb
+    ports:
+        - 12500:27017
+    restart: unless-stopped
+    networks: 
+        - rocky-network

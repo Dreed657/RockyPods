@@ -34,7 +34,10 @@ class GameContoller {
     }
 
     public async GetLeaderboard(req: Request, res: Response) {
-        const top10 = await User.find({}).sort({'rounds': -1}).select('rounds').limit(10);
+        const top10 = await User.find({})
+            .limit(10)
+            .sort({ rounds: -1 })
+            .select({ username: 1, rounds: 1})
 
         return res.status(200).json(top10);
     }

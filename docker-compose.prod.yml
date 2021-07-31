@@ -14,4 +14,4 @@ services:
       context: ./Server
       dockerfile: ./Dockerfile.Prod
     environment: 
-      - MONGO_URL=mongodb+srv://root:<password>@cluster0.tlzjj.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
+      - MONGO_URL=mongodb+srv://root:tz6ExQa05hyOzyto@cluster0.tlzjj.mongodb.net/myFirstDatabase?retryWrites=true&w=majority

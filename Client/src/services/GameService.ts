@@ -67,6 +67,10 @@ class GameService {
     SaveRound(data: IRound): Promise<AxiosResponse> {
         return axiosInstance.post(`${API_URL}/game/saveround`, data);
     }
+
+    GetLeaderBoards(): Promise<AxiosResponse> {
+        return axiosInstance.get(`${API_URL}/game/leaderboard`);
+    }
 }
 
 export default new GameService();

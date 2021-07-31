@@ -22,14 +22,5 @@ services:
         networks: 
             - rocky-network
 
-    mongodb:
-        image: mongo
-        container_name: mongodb
-        ports:
-            - 12500:27017
-        restart: unless-stopped
-        networks: 
-            - rocky-network
-
 networks:
     rocky-network:
