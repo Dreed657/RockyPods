@@ -106,7 +106,7 @@ class AuthContoller {
                 },
             ]);
 
-            const total = await Round.countDocuments({ userId: req.user._id });
+            const total = await Round.count({ userId: req.user._id });
 
             const precision = 2;
             const stats = rawStats[0];

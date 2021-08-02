@@ -7,5 +7,6 @@ const Prefix = '/game';
 
 export default (app: Express) => {
     app.post(`${Prefix}/SaveRound`, isAuthenticated, GameContoller.SaveRound);
-    app.get(`${Prefix}/leaderboard`, isAuthenticated, GameContoller.GetLeaderboard);
+    app.get(`${Prefix}/leaderboard`, isAuthenticated, GameContoller.Leaderboard);
+    app.get(`${Prefix}/summery`, GameContoller.Summery);
 };
