@@ -2,10 +2,19 @@ version: "3.7"
 services:
     frontend:
         container_name: Client
-        image: dreed657/rockypodsclient
         build:
             context: ./Client
-            dockerfile: ./Dockerfile.Prod
+            dockerfile: ./Dockerfile.Dev
+        ports:
+            - "80:3000"
+        networks: 
+            - rocky-network
+
+    dashboard:
+        container_name: Dashboard
+        build:
+            context: ./dashboard
+            dockerfile: ./Dockerfile.Dev
         ports:
             - "3000:3000"
         networks: 
@@ -13,10 +22,9 @@ services:
             
     backend:
         container_name: Server
-        image: dreed657/rockypodsserver
         build:
             context: ./Server
-            dockerfile: ./Dockerfile.Prod
+            dockerfile: ./Dockerfile.Dev
         ports:
             - "5000:5000"
         networks: 
