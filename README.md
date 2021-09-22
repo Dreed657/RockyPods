@@ -1,6 +1,5 @@
 # Simple Rock, Paper, Scissors game
 
-##### Badges
 [![Lint Code Base](https://github.com/Dreed657/RockyPods/actions/workflows/super-linter.yml/badge.svg)](https://github.com/Dreed657/RockyPods/actions/workflows/super-linter.yml)
 
 
@@ -22,10 +21,10 @@ docker-compose -f .\docker-compose.yml -f .\docker-compose.dev.yml up -d
 
 ![screen-gif](https://i.imgur.com/brDWquV.gif)
 
-### TODO:
+### TODO
 - [x] Make it responsive!
 
-####  Add more features:
+#### Add more features
 - [x] Add better game statistics?
 - [x] Add data persistance db?
 - [x] Add Auth? Profiles?
