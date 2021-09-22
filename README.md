@@ -22,7 +22,7 @@ docker-compose -f .\docker-compose.yml -f .\docker-compose.dev.yml up -d
 - [x] Make it responsive!
 
 ####  Add more features:
--  Add better game statistics?
--  Add data persistance db?
--  Add Auth? Profiles?
--  Add Multiplayer?
+- [x] Add better game statistics?
+- [x] Add data persistance db?
+- [x] Add Auth? Profiles?
+- [ ] Add Multiplayer?
