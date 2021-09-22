@@ -1,3 +1,5 @@
+[![Lint Code Base](https://github.com/Dreed657/RockyPods/actions/workflows/super-linter.yml/badge.svg)](https://github.com/Dreed657/RockyPods/actions/workflows/super-linter.yml)
+
 # Simple Rock, Paper, Scissors game
 
 ## Initail setup
