@@ -1,6 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Header from '../../components/Header';
 import { LeaderboardDto } from '../../models/LeaderBoardDto';
 import GameService from '../../services/GameService';
@@ -20,11 +19,11 @@ const LeaderboardPage = () => {
         <div className="wrapper w-50">
             <Header></Header>
             <h1>Leaderboard Page.</h1>
-           
+
             { !stats ? (
                 <p>Loading...</p>
             ) : (
-            <table className="table table-striped" style={{color: 'white'}}>
+            <table className="table" style={{color: 'white'}}>
                 <thead>
                     <tr>
                     <th scope="col">#</th>
