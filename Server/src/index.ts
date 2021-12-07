@@ -3,6 +3,8 @@ require('dotenv').config();
 
 import express from 'express';
 
+import serverless from 'serverless-http';
+
 import configuration from './config';
 import configureExpress from './config/express';
 import configureDb from './database';
@@ -23,8 +25,11 @@ healthRoutes(app);
 authRoutes(app);
 gameRoutes(app);
 
-// Start the app on PORT
-app.listen(PORT, () => {
-    // tslint:disable-next-line:no-console
-    console.log(` Server is listeing on ${PORT}...`);
-});
+// Start the app on PORT for normal operation
+// app.listen(PORT, () => {
+//     // tslint:disable-next-line:no-console
+//     console.log(` Server is listeing on ${PORT}...`);
+// });
+
+// Start for serverless
+module.exports.handler = serverless(app);
