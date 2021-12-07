@@ -4,8 +4,6 @@ import { ResultEnum } from '../models/ResultEnum';
 
 import axiosInstance from '../utils/axiosUtil';
 
-const API_URL = 'http://localhost:4000';
-
 interface IRound {
     gesture: string,
     result: string
@@ -65,11 +63,11 @@ class GameService {
     }
 
     SaveRound(data: IRound): Promise<AxiosResponse> {
-        return axiosInstance.post(`${API_URL}/game/saveround`, data);
+        return axiosInstance.post(`${process.env.REACT_APP_BackEndUrl}/game/saveround`, data);
     }
 
     GetLeaderBoards(): Promise<AxiosResponse> {
-        return axiosInstance.get(`${API_URL}/game/leaderboard`);
+        return axiosInstance.get(`${process.env.REACT_APP_BackEndUrl}/game/leaderboard`);
     }
 }
 

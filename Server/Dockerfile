@@ -9,8 +9,10 @@ RUN yarn --silent
 
 COPY . .
 
+RUN yarn build
+
 ENV PORT=5000
 EXPOSE 5000
 
-# Run development server
-CMD [ "yarn", "dev" ]
+# Run server
+CMD [ "yarn", "start" ]
