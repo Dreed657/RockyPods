@@ -6,6 +6,7 @@ class HealthContoller {
         const data = {
             status: 'OK',
             uptime: process.uptime(),
+            service: process.pid,
             timestamp: Date.now(),
             'DbState': mongoose.STATES[mongoose.connection.readyState],
         };

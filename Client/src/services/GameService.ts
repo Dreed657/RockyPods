@@ -4,7 +4,7 @@ import { ResultEnum } from '../models/ResultEnum';
 
 import axiosInstance from '../utils/axiosUtil';
 
-const API_URL = 'http://localhost:5000';
+const API_URL = 'http://localhost:4000';
 
 interface IRound {
     gesture: string,

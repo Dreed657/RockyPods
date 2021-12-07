@@ -1,34 +1,57 @@
 version: "3.7"
 services:
-    frontend:
-        container_name: Client
-        build:
-            context: ./Client
-            dockerfile: ./Dockerfile.Dev
-        ports:
-            - "80:3000"
-        networks: 
-            - rocky-network
+  frontend:
+    container_name: Client
+    build:
+      context: ./Client
+      dockerfile: ./Dockerfile.Dev
+    ports:
+      - "80:3000"
+    networks:
+      - rocky-network
 
-    dashboard:
-        container_name: Dashboard
-        build:
-            context: ./dashboard
-            dockerfile: ./Dockerfile.Dev
-        ports:
-            - "3000:3000"
-        networks: 
-            - rocky-network
-            
-    backend:
-        container_name: Server
-        build:
-            context: ./Server
-            dockerfile: ./Dockerfile.Dev
-        ports:
-            - "5000:5000"
-        networks: 
-            - rocky-network
+  dashboard:
+    container_name: Dashboard
+    build:
+      context: ./dashboard
+      dockerfile: ./Dockerfile.Dev
+    ports:
+      - "3000:3000"
+    networks:
+      - rocky-network
+
+  backend:
+    build:
+      context: ./Server
+      dockerfile: ./Dockerfile.Dev
+    environment:
+      - MONGO_URL=mongodb://mongodb:27017/rockypods
+    ports:
+      - "5000"
+    networks:
+      - rocky-network
+    depends_on:
+      - mongodb
+
+  mongodb:
+    image: mongo
+    container_name: mongodb
+    ports:
+      - 12500:27017
+    restart: unless-stopped
+    networks:
+      - rocky-network
+
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - backend
+    ports:
+      - "4000:4000"
+    networks:
+      - rocky-network
 
 networks:
-    rocky-network:
+  rocky-network:

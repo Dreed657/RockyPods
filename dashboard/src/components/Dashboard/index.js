@@ -33,7 +33,7 @@ export default () => {
 
   const onReloadData = () => {
     // TODO: Move this to an services!
-    fetch("http://localhost:5000/game/summery")
+    fetch("http://localhost:4000/game/summery")
       .then((res) => res.json())
       .then((res) => {
         setLoading(false);
