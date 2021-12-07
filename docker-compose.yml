@@ -4,9 +4,9 @@ services:
     container_name: Client
     build:
       context: ./Client
-      dockerfile: ./Dockerfile.Dev
+      dockerfile: ./Dockerfile
     ports:
-      - "80:3000"
+      - "8080:8080"
     networks:
       - rocky-network
 
@@ -14,7 +14,7 @@ services:
     container_name: Dashboard
     build:
       context: ./dashboard
-      dockerfile: ./Dockerfile.Dev
+      dockerfile: ./Dockerfile
     ports:
       - "3000:3000"
     networks:
@@ -23,7 +23,7 @@ services:
   backend:
     build:
       context: ./Server
-      dockerfile: ./Dockerfile.Dev
+      dockerfile: ./Dockerfile
     environment:
       - MONGO_URL=mongodb://mongodb:27017/rockypods
     ports:

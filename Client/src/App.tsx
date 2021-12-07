@@ -15,6 +15,7 @@ import './App.css';
 function App() {
     useEffect(() => {
         HealthService.HealthCheck().then((res) => console.log(res));
+        console.log(process.env);
     }, []);
 
     return (

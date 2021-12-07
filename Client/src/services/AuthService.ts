@@ -2,8 +2,6 @@ import { AxiosResponse } from 'axios';
 
 import axiosInstance from '../utils/axiosUtil';
 
-const API_URL = 'http://localhost:4000';
-
 interface IAuth {
     username: string;
     password: string;
@@ -11,15 +9,15 @@ interface IAuth {
 
 class AuthService {
     login(data: IAuth): Promise<AxiosResponse<any>> {
-        return axiosInstance.post(`${API_URL}/auth/login`, data);
+        return axiosInstance.post(`${process.env.REACT_APP_BackEndUrl}/auth/login`, data);
     }
 
     register(data: IAuth): Promise<AxiosResponse<any>> {
-        return axiosInstance.post(`${API_URL}/auth/register`, data);
+        return axiosInstance.post(`${process.env.REACT_APP_BackEndUrl}/auth/register`, data);
     }
 
     getProfile(): Promise<AxiosResponse> {
-        return axiosInstance.get(`${API_URL}/auth/getprofile`);
+        return axiosInstance.get(`${process.env.REACT_APP_BackEndUrl}/auth/getprofile`);
     }
 }
 
