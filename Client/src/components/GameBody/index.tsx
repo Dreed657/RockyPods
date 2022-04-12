@@ -19,7 +19,7 @@ import TitleUtil from '../../utils/TitleUtil';
 import { ResultEnum } from '../../models/ResultEnum';
 
 const GameBody = () => {
-    // const [guestMode, setGuestMode] = useState<boolean>(false);
+    const [guestMode, setGuestMode] = useState<boolean>(false);
 
     const [roundsCount, setRoundsCount] = useState<number>(0);
 
@@ -54,9 +54,9 @@ const GameBody = () => {
 
         console.log('Data: ', data);
 
-        // if (!guestMode) {
+        if (!guestMode) {
             GameService.SaveRound(data);
-        // }
+        }
 
         if (roundResult === ResultEnum.Player) {
             setPlayerScore(playerScore + 1);
@@ -82,18 +82,18 @@ const GameBody = () => {
         }
 
         // [Dispute Wins / (Dispute Wins + Dispute Losses)] * 100 = Win Rate
-        let playerWinRate = Math.round(
+        let pWinRate = Math.round(
             (playerScore / (computerScore + (roundsCount - playerScore))) * 100
         );
-        let computerWinRate = Math.round(
+        let cWinRate = Math.round(
             (computerScore / (computerScore + (roundsCount - computerScore))) *
                 100
         );
-        let drawPercentage = Math.round((drawScore / roundsCount) * 100);
+        let dPercentage = Math.round((drawScore / roundsCount) * 100);
 
-        setDrawPercentage(drawPercentage);
-        setPlayerWinRate(playerWinRate);
-        setComputerWinRate(computerWinRate);
+        setDrawPercentage(dPercentage);
+        setPlayerWinRate(pWinRate);
+        setComputerWinRate(cWinRate);
 
         setRoundsCount(roundsCount + 1);
 
